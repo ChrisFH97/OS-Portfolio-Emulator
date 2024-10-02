@@ -1,15 +1,24 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+   './portfolio/app/styles/**/*.css',
+    './app/**/*.{js,ts,jsx,tsx}',   // Ensure this path covers your App Directory
+    './components/**/*.{js,ts,jsx,tsx}', // Add components folder as well
+    './layouts/**/*.{js,ts,jsx,tsx}',  // Add layouts folder too
+    './pages/**/*.{js,ts,jsx,tsx}',   // In case pages directory is used
+    './styles/**/*.{css}',   // If you have any other stylesheets
   ],
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        'windows-taskbar': '#202122',
+        'windows-taskbar-opacity': '#202122fa',
+        'windows-start-menu': '#2a2a2afa',
+      },
+      backdropBlur: {
+        sm: '4px',
+        DEFAULT: '10px',
+        lg: '16px',
       },
     },
   },
