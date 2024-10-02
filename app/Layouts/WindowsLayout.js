@@ -1,17 +1,29 @@
 import Desktop from "../components/windows/Desktop";
 import WindowsTaskbar from "../components/windows/Taskbar";
 import '../styles/globals.css';
+import { useState } from 'react';
 
-const WindowsLayout = ({ children }) => {
-    return (
-      <div className="windows-layout">
+const WindowsLayout = () => {
+  const [isNotepadOpen, setIsNotepadOpen] = useState(false);  // Notepad state
 
-        <main>{children}</main>
-        <Desktop />
-        <WindowsTaskbar />
-      </div>
-    );
+  const openNotepad = () => {
+    setIsNotepadOpen(true);
   };
-  
-  export default WindowsLayout;
-  
+
+  const closeNotepad = () => {
+    setIsNotepadOpen(false);
+  };
+
+  return (
+    <div className="windows-layout fixed">
+      <Desktop 
+        isNotepadOpen={isNotepadOpen} 
+        openNotepad={openNotepad} 
+        closeNotepad={closeNotepad} 
+      />
+      <WindowsTaskbar openNotepad={openNotepad} />  {/* Pass the function to the taskbar */}
+    </div>
+  );
+};
+
+export default WindowsLayout;

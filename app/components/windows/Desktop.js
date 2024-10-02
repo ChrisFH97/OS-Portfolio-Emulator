@@ -1,17 +1,31 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Notepad from './Applications/Notepad';
 
-const Desktop = () => {
+const Desktop = ({ isNotepadOpen, openNotepad, closeNotepad }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [startPosition, setStartPosition] = useState({ x: 0, y: 0 });
   const [currentPosition, setCurrentPosition] = useState({ x: 0, y: 0 });
+  const [isAppDragging, setIsAppDragging] = useState(false);
+  const [notepadVisible, setNotepadVisible] = useState(false);
+
+  // Handle Notepad Fade-in when opened
+  useEffect(() => {
+    if (isNotepadOpen) {
+      setNotepadVisible(true);
+    } else {
+      setNotepadVisible(false);
+    }
+  }, [isNotepadOpen]);
 
   const handleMouseDown = (e) => {
-    setIsDragging(true);
-    const startX = e.clientX;
-    const startY = e.clientY;
-    setStartPosition({ x: startX, y: startY });
-    setCurrentPosition({ x: startX, y: startY });
+    if (!isAppDragging && e.target.className !== 'application-header') {
+      setIsDragging(true);
+      const startX = e.clientX;
+      const startY = e.clientY;
+      setStartPosition({ x: startX, y: startY });
+      setCurrentPosition({ x: startX, y: startY });
+    }
   };
 
   const handleMouseMove = (e) => {
@@ -26,7 +40,7 @@ const Desktop = () => {
   };
 
   const getSelectionBoxStyle = () => {
-    if (!isDragging) return { display: 'none' };
+    if (!isDragging || isAppDragging) return { display: 'none' };
 
     const width = Math.abs(currentPosition.x - startPosition.x);
     const height = Math.abs(currentPosition.y - startPosition.y);
@@ -55,9 +69,17 @@ const Desktop = () => {
         style={getSelectionBoxStyle()}
       ></div>
 
-      {/* Desktop icons and other elements */}
-      <div className="absolute top-[50px] left-[50px]">
-   
+      <div className="absolute">
+        {isNotepadOpen && (
+          <div
+            className={`transition-opacity duration-250 ${notepadVisible ? 'opacity-100' : 'opacity-0'}`}
+          >
+            <Notepad
+              setIsAppDragging={setIsAppDragging}
+              onCloseNotepad={closeNotepad}
+            />
+          </div>
+        )}
       </div>
     </div>
   );
