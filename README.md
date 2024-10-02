@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🖥️ OS Portfolio Emulator
 
-## Getting Started
+🎉 **Welcome to my multi-OS portfolio emulator!** This project is a personal portfolio built using **React** and **Next.js**, emulating the look and feel of multiple operating systems like **Windows**, **macOS**, **iOS**, **Android**, and **Linux**. Each OS environment is carefully crafted to replicate its real-world counterpart, giving users a unique way to explore my work.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **🖥️ Multiple OS Interfaces**: Choose between Windows, macOS, iOS, Android, and Linux layouts.
+- **🔍 Search functionality** to dynamically filter through pinned apps on the Windows layout.
+- **📱 Responsive design** for both desktop (Windows, macOS, Linux) and mobile views (iOS, Android).
+- **🖱️ Interactive elements** such as taskbars, start menus, app launchers, and system icons.
+- **🎨 Smooth animations** and hover effects that mimic real OS behavior.
+- **⚡ Built with Next.js** for fast performance and static generation.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🎯 Purpose
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+This portfolio offers a **fun and engaging experience**, allowing visitors to interact with various OS environments while exploring my work. It showcases my ability to develop multi-platform user interfaces using **React**, **Next.js**, and **Tailwind CSS**.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## 🛠️ Tech Stack
 
-## Learn More
+- **React** ⚛️
+- **Next.js** 🚀
+- **Tailwind CSS** 💨
+- **Node.js** 🔗
+- 
+## 🖥️ OS Environments
 
-To learn more about Next.js, take a look at the following resources:
+1. **Windows 11** 🪟
+    - Start Menu, Taskbar, and classic Windows apps.
+2. **macOS** 🍏
+    - macOS dock, spotlight search, and system animations.
+3. **iOS** 📱
+    - iOS-like app drawer and notification center for mobile.
+4. **Android** 🤖
+    - Android interface with customizable widgets and app icons.
+5. **Linux** 🐧
+    - Linux desktop emulation with terminal access and system shortcuts.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📦 Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/OS-Portfolio-Emulator.git
+    ```
 
-## Deploy on Vercel
+2. Navigate to the project directory:
+    ```bash
+    cd OS-Portfolio-Emulator
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Install the dependencies:
+    ```bash
+    npm install
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+4. Run the development server:
+    ```bash
+    npm run dev
+    ```
+
+5. Open your browser and go to:
+    ```
+    http://localhost:3000
+    ```
+
+## 🧑‍💻 Usage
+
+- Click on the **Start Menu** or **Dock** icon in the taskbar to view pinned apps.
+- Use the search bar to filter pinned applications in real-time.
+- Explore interactive elements like the **taskbars**, **start menus**, **dock**, and **app drawers**.
+- Easily switch between **Windows**, **macOS**, **iOS**, **Android**, and **Linux** views.
+
+## 🌐 Live Demo
+
+You can view a live demo of this project [here](https://your-deployed-link.vercel.app).
+
+## 🤝 Contributions
+
+Contributions are welcome! If you have any suggestions, bug fixes, or improvements, feel free to submit a pull request.
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## 💻 Screenshots
+
+| OS                      | Interface                 |
+|-------------------------|---------------------------|
+| Windows 11               | ![Windows 11](./screenshots/windows.png) |
+| macOS                    | ![macOS](./screenshots/macos.png) |
+| iOS                      | ![iOS](./screenshots/ios.png) |
+| Android                  | ![Android](./screenshots/android.png) |
+| Linux                    | ![Linux](./screenshots/linux.png) |
+
+## 👨‍💻 Author
+
+- **Chris** - [GitHub Profile](https://github.com/ChrisFH97)
+
+Feel free to connect with me and explore more of my work!
+
