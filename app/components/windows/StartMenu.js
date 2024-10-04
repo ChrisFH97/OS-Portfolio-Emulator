@@ -10,23 +10,21 @@ const pinnedPrograms = [
   { name: "LinkedIn", icon: "/windows/linkedin.png" },
   { name: "Github", icon: "/windows/github.png" },
   { name: "Chris AI", icon: "/windows/copilot.png" },
-  { name: "Mine sweeper", icon: "/windows/minesweeper.png" },
-  { name: "Calculator", icon: "/windows/calculator.png" },
-  { name: "Notepad", icon: "/windows/notepad.png" }, // This is the one we'll use to open Notepad
+  { name: "Minesweeper", icon: "/windows/minesweeper.png" },
+  { name: "Calculator", icon: "/windows/calculator.png" }, // Used to open Calculator
+  { name: "Notepad", icon: "/windows/notepad.png" },
   { name: "Spotify", icon: "/windows/spotify.png" },
 ];
 
-const StartMenu = ({ onOpenNotepad }) => {
-  const [searchTerm, setSearchTerm] = useState(''); // State for the search term
+const StartMenu = ({ onOpenApp }) => {
+  const [searchTerm, setSearchTerm] = useState('');
 
-  const filteredPrograms = pinnedPrograms.filter(program => 
+  const filteredPrograms = pinnedPrograms.filter(program =>
     program.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const handleProgramClick = (programName) => {
-    if (programName === 'Notepad') {
-      onOpenNotepad();  // Trigger the Notepad to open
-    }
+    onOpenApp(programName);
   };
 
   return (
@@ -36,10 +34,10 @@ const StartMenu = ({ onOpenNotepad }) => {
       <div className="flex items-center justify-between p-4 px-6">
         <input 
           type="text" 
-          placeholder="Search for apps, settings and documents" 
+          placeholder="Search for apps, settings, and documents" 
           className="w-full py-2 px-6 rounded-full bg-[#242424] text-xs text-white placeholder-[#6e6e6f] focus:outline-none"
-          value={searchTerm} // Controlled input value
-          onChange={(e) => setSearchTerm(e.target.value)} // Update search term
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
 

@@ -1,38 +1,26 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Notepad from './Applications/Notepad';
+import Calculator from './Applications/Calculator';
 
-const Desktop = ({ isNotepadOpen, openNotepad, closeNotepad }) => {
+const Desktop = ({ apps, closeApp, toggleMinimizeApp }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [startPosition, setStartPosition] = useState({ x: 0, y: 0 });
   const [currentPosition, setCurrentPosition] = useState({ x: 0, y: 0 });
   const [isAppDragging, setIsAppDragging] = useState(false);
-  const [notepadVisible, setNotepadVisible] = useState(false);
-
-  // Handle Notepad Fade-in when opened
-  useEffect(() => {
-    if (isNotepadOpen) {
-      setNotepadVisible(true);
-    } else {
-      setNotepadVisible(false);
-    }
-  }, [isNotepadOpen]);
 
   const handleMouseDown = (e) => {
     if (!isAppDragging && e.target.className !== 'application-header') {
       setIsDragging(true);
-      const startX = e.clientX;
-      const startY = e.clientY;
-      setStartPosition({ x: startX, y: startY });
-      setCurrentPosition({ x: startX, y: startY });
+      setStartPosition({ x: e.clientX, y: e.clientY });
+      setCurrentPosition({ x: e.clientX, y: e.clientY });
     }
   };
 
   const handleMouseMove = (e) => {
-    if (!isDragging) return;
-    const currentX = e.clientX;
-    const currentY = e.clientY;
-    setCurrentPosition({ x: currentX, y: currentY });
+    if (isDragging) {
+      setCurrentPosition({ x: e.clientX, y: e.clientY });
+    }
   };
 
   const handleMouseUp = () => {
@@ -56,6 +44,7 @@ const Desktop = ({ isNotepadOpen, openNotepad, closeNotepad }) => {
     };
   };
 
+  // Dynamically render apps based on their states
   return (
     <div
       className="relative w-screen h-screen bg-cover bg-center bg-no-repeat"
@@ -69,18 +58,25 @@ const Desktop = ({ isNotepadOpen, openNotepad, closeNotepad }) => {
         style={getSelectionBoxStyle()}
       ></div>
 
-      <div className="absolute">
-        {isNotepadOpen && (
-          <div
-            className={`transition-opacity duration-250 ${notepadVisible ? 'opacity-100' : 'opacity-0'}`}
-          >
-            <Notepad
-              setIsAppDragging={setIsAppDragging}
-              onCloseNotepad={closeNotepad}
-            />
-          </div>
-        )}
-      </div>
+      {/* Render Notepad if it's open and not minimized */}
+      {apps.find(app => app.name === 'Notepad')?.isOpen && !apps.find(app => app.name === 'Notepad')?.isMinimized && (
+        <Notepad
+          setIsAppDragging={setIsAppDragging}
+          onCloseNotepad={() => closeApp('Notepad')}
+          onMinimizeToggle={() => toggleMinimizeApp('Notepad')}
+          isMinimized={apps.find(app => app.name === 'Notepad')?.isMinimized}
+        />
+      )}
+
+      {/* Render Calculator if it's open and not minimized */}
+      {apps.find(app => app.name === 'Calculator')?.isOpen && !apps.find(app => app.name === 'Calculator')?.isMinimized && (
+        <Calculator
+          setIsAppDragging={setIsAppDragging}
+          onMinimizeToggle={() => toggleMinimizeApp('Calculator')}
+          isMinimized={apps.find(app => app.name === 'Calculator')?.isMinimized}
+          onCloseCalculator={() => closeApp('Calculator')}
+        />
+      )}
     </div>
   );
 };

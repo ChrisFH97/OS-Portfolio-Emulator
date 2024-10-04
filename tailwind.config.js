@@ -14,6 +14,8 @@ module.exports = {
         'windows-taskbar': '#202122',
         'windows-taskbar-opacity': '#202122fa',
         'windows-start-menu': '#2a2a2afa',
+        'app-background': '#272727',
+        'calculator-background': '#202020',
       },
       backdropBlur: {
         sm: '4px',

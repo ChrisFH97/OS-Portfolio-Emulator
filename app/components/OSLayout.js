@@ -20,7 +20,7 @@ export default function OSLayout({ children }) {
         return <WindowsLayout>{children}</WindowsLayout>;
       // Add cases for other OS layouts (macOS, Linux, etc.)
       default:
-        return <div>Unknown OS</div>;  // Fallback for unknown OS
+        return <WindowsLayout>{children}</WindowsLayout>;  // Fallback for unknown OS
     }
   };
 
