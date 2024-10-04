@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Notepad from './Applications/Notepad';
 import Calculator from './Applications/Calculator';
+import Minesweeper from './Applications/Minesweeper';
 
 const Desktop = ({ apps, closeApp, toggleMinimizeApp }) => {
   const [isDragging, setIsDragging] = useState(false);
@@ -77,6 +78,16 @@ const Desktop = ({ apps, closeApp, toggleMinimizeApp }) => {
           onCloseCalculator={() => closeApp('Calculator')}
         />
       )}
+
+      {apps.find(app => app.name === 'Minesweeper')?.isOpen && !apps.find(app => app.name === 'Minesweeper')?.isMinimized && (
+        <Minesweeper 
+          setIsAppDragging={setIsAppDragging}
+          onMinimizeToggle={() => toggleMinimizeApp('Minesweeper')}
+          isMinimized={apps.find(app => app.name === 'Minesweeper')?.isMinimized}
+          onCloseMinesweeper={() => closeApp('Minesweeper')}
+        />
+      )}
+
     </div>
   );
 };
