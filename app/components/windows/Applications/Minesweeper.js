@@ -177,7 +177,7 @@ const Minesweeper = ({ setIsAppDragging, onCloseMinesweeper, isMinimized, onMini
   };
 
   return (
-    <div style={{ visibility: isMinimized ? 'hidden' : 'visible' }} className={`transition-opacity duration-300 ${isMinimized ? 'opacity-0' : 'opacity-100'}`}>
+    <div style={{ visibility: isMinimized ? 'hidden' : 'visible' }} className={`transition-opacity  duration-300 ${isMinimized ? 'opacity-0' : 'opacity-100'}`}>
       <Rnd
         size={size}
         position={position}
@@ -188,7 +188,7 @@ const Minesweeper = ({ setIsAppDragging, onCloseMinesweeper, isMinimized, onMini
         minHeight={350}
         maxHeight={350}
         bounds="window"
-        className={`rounded-lg shadow-lg transition-opacity duration-300 ${closing || isFadingOut ? 'opacity-0' : fadeIn ? 'opacity-100' : 'opacity-0'}`}
+        className={`rounded-lg shadow-lg transition-opacity duration-300 border border-[#343434] ${closing || isFadingOut ? 'opacity-0' : fadeIn ? 'opacity-100' : 'opacity-0'}`}
         dragHandleClassName="application-header"
         onDragStart={() => setIsAppDragging(true)}
         onDragStop={() => setIsAppDragging(false)}
@@ -209,7 +209,7 @@ const Minesweeper = ({ setIsAppDragging, onCloseMinesweeper, isMinimized, onMini
               <button className="h-10 w-10 hover:bg-[#383838] flex items-center justify-center" onClick={handleMaximize}>
                 <MaximizeIcon />
               </button>
-              <button className="h-10 w-10 hover:bg-[#a63b23] flex items-center justify-center" onClick={handleClose}>
+              <button className="h-10 w-10 hover:bg-[#a63b23] flex items-center justify-center rounded-tr-md" onClick={handleClose}>
                 <CloseIcon />
               </button>
             </div>

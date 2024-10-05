@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import '../../styles/globals.css';
-import localFont from 'next/font/local';
 import StartMenuItem from '@/app/components/common/Windows/StartMenuItem';
-
+import localFont from 'next/font/local';
 const windowsFont = localFont({ src: '../../fonts/SegoeUIVF.ttf' });
 
 const pinnedPrograms = [
@@ -24,7 +23,23 @@ const StartMenu = ({ onOpenApp }) => {
   );
 
   const handleProgramClick = (programName) => {
-    onOpenApp(programName);
+    
+    if(programName === "LinkedIn" || programName === "Github" ){
+        
+        if(programName === "LinkedIn"){
+          let LinkedIn = window.open("https://www.linkedin.com/in/christopherhaig97/", "_blank");
+          LinkedIn.focus();
+        }else if(programName === "Github"){
+          let Github = window.open("https://github.com/ChrisFH97", "_blank");
+          Github.focus();
+        }
+
+    }else{
+      onOpenApp(programName);
+    }
+
+    
+    
   };
 
   return (

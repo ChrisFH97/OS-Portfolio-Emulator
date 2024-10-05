@@ -1,6 +1,9 @@
 import Desktop from "../components/windows/Desktop";
 import WindowsTaskbar from "../components/windows/Taskbar";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import localFont from 'next/font/local';
+const windowsFont = localFont({ src: '../fonts/SegoeUIVF.ttf' });
+
 import '../styles/globals.css';
 
 const WindowsLayout = () => {
@@ -13,6 +16,21 @@ const WindowsLayout = () => {
     { name: 'Calculator', isMinimized: false, isOpen: false },
     { name: 'Minesweeper', isMinimized: false, isOpen: false }
   ]);
+
+  useEffect(() => {
+    // Disable right-click across the site
+    const disableRightClick = (e) => {
+      e.preventDefault();
+    };
+    
+    // Attach event listener
+    document.addEventListener('contextmenu', disableRightClick);
+
+    // Cleanup event listener on component unmount
+    return () => {
+      document.removeEventListener('contextmenu', disableRightClick);
+    };
+  }, []);
 
   // Helper function to find an app by name
   const getApp = (appName) => AppStatus.find(app => app.name === appName);
@@ -39,7 +57,7 @@ const WindowsLayout = () => {
   };
 
   return (
-    <div className="windows-layout fixed">
+    <div className={`windows-layout fixed ${windowsFont.className}`}>
       {/* Desktop */}
       <Desktop
         apps={AppStatus}
