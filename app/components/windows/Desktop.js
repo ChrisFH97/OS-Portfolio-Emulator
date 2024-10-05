@@ -1,24 +1,26 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Notepad from './Applications/Notepad';
+import Calculator from './Applications/Calculator';
 
-const Desktop = () => {
+const Desktop = ({ apps, closeApp, toggleMinimizeApp }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [startPosition, setStartPosition] = useState({ x: 0, y: 0 });
   const [currentPosition, setCurrentPosition] = useState({ x: 0, y: 0 });
+  const [isAppDragging, setIsAppDragging] = useState(false);
 
   const handleMouseDown = (e) => {
-    setIsDragging(true);
-    const startX = e.clientX;
-    const startY = e.clientY;
-    setStartPosition({ x: startX, y: startY });
-    setCurrentPosition({ x: startX, y: startY });
+    if (!isAppDragging && e.target.className !== 'application-header') {
+      setIsDragging(true);
+      setStartPosition({ x: e.clientX, y: e.clientY });
+      setCurrentPosition({ x: e.clientX, y: e.clientY });
+    }
   };
 
   const handleMouseMove = (e) => {
-    if (!isDragging) return;
-    const currentX = e.clientX;
-    const currentY = e.clientY;
-    setCurrentPosition({ x: currentX, y: currentY });
+    if (isDragging) {
+      setCurrentPosition({ x: e.clientX, y: e.clientY });
+    }
   };
 
   const handleMouseUp = () => {
@@ -26,7 +28,7 @@ const Desktop = () => {
   };
 
   const getSelectionBoxStyle = () => {
-    if (!isDragging) return { display: 'none' };
+    if (!isDragging || isAppDragging) return { display: 'none' };
 
     const width = Math.abs(currentPosition.x - startPosition.x);
     const height = Math.abs(currentPosition.y - startPosition.y);
@@ -42,6 +44,7 @@ const Desktop = () => {
     };
   };
 
+  // Dynamically render apps based on their states
   return (
     <div
       className="relative w-screen h-screen bg-cover bg-center bg-no-repeat"
@@ -55,10 +58,25 @@ const Desktop = () => {
         style={getSelectionBoxStyle()}
       ></div>
 
-      {/* Desktop icons and other elements */}
-      <div className="absolute top-[50px] left-[50px]">
-   
-      </div>
+      {/* Render Notepad if it's open and not minimized */}
+      {apps.find(app => app.name === 'Notepad')?.isOpen && !apps.find(app => app.name === 'Notepad')?.isMinimized && (
+        <Notepad
+          setIsAppDragging={setIsAppDragging}
+          onCloseNotepad={() => closeApp('Notepad')}
+          onMinimizeToggle={() => toggleMinimizeApp('Notepad')}
+          isMinimized={apps.find(app => app.name === 'Notepad')?.isMinimized}
+        />
+      )}
+
+      {/* Render Calculator if it's open and not minimized */}
+      {apps.find(app => app.name === 'Calculator')?.isOpen && !apps.find(app => app.name === 'Calculator')?.isMinimized && (
+        <Calculator
+          setIsAppDragging={setIsAppDragging}
+          onMinimizeToggle={() => toggleMinimizeApp('Calculator')}
+          isMinimized={apps.find(app => app.name === 'Calculator')?.isMinimized}
+          onCloseCalculator={() => closeApp('Calculator')}
+        />
+      )}
     </div>
   );
 };

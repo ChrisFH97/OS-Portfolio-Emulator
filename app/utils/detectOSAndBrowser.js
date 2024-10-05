@@ -27,6 +27,8 @@ export const detectOSAndBrowser = () => {
       ? 'Internet Explorer'
       : 'Unknown Browser';
   
+    console.log(`OS: ${os}, Browser: ${browser}`);
+
     return { os, browser };
   };
   
