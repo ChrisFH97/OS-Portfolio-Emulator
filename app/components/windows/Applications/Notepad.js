@@ -99,7 +99,7 @@ const Notepad = ({ setIsAppDragging, onCloseNotepad, isMinimized, onMinimizeTogg
       minWidth={300}
       minHeight={200}
       bounds="window"
-      className={`rounded-lg shadow-lg notepad-window transition-opacity duration-300 ${
+      className={`rounded-lg shadow-lg notepad-window transition-opacity duration-300  border border-[#343434] ${
         closing || isFadingOut ? 'opacity-0' : fadeIn ? 'opacity-100' : 'opacity-0'
       } ${isMaximized ? 'transition-all duration-300' : ''}`} // Transition for opening/closing, maximizing, minimizing
       dragHandleClassName="application-header"

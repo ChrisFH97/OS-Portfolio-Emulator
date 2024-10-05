@@ -25,3 +25,14 @@ body {
     text-wrap: balance;
   }
 }
+
+
+/* Disable text selection globally */
+* {
+  user-select: none;
+}
+
+/* Enable text selection only for certain apps, like Notepad */
+.notepad-app, .notepad-app * {
+  user-select: text;
+}

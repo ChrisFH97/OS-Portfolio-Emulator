@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import '../../styles/globals.css';
-import localFont from 'next/font/local';
 import StartMenuItem from '@/app/components/common/Windows/StartMenuItem';
-
+import localFont from 'next/font/local';
 const windowsFont = localFont({ src: '../../fonts/SegoeUIVF.ttf' });
 
 const pinnedPrograms = [
@@ -11,7 +10,7 @@ const pinnedPrograms = [
   { name: "Github", icon: "/windows/github.png" },
   { name: "Chris AI", icon: "/windows/copilot.png" },
   { name: "Minesweeper", icon: "/windows/minesweeper.png" },
-  { name: "Calculator", icon: "/windows/calculator.png" }, // Used to open Calculator
+  { name: "Calculator", icon: "/windows/calculator.png" },
   { name: "Notepad", icon: "/windows/notepad.png" },
   { name: "Spotify", icon: "/windows/spotify.png" },
 ];
@@ -24,7 +23,23 @@ const StartMenu = ({ onOpenApp }) => {
   );
 
   const handleProgramClick = (programName) => {
-    onOpenApp(programName);
+    
+    if(programName === "LinkedIn" || programName === "Github" ){
+        
+        if(programName === "LinkedIn"){
+          let LinkedIn = window.open("https://www.linkedin.com/in/christopherhaig97/", "_blank");
+          LinkedIn.focus();
+        }else if(programName === "Github"){
+          let Github = window.open("https://github.com/ChrisFH97", "_blank");
+          Github.focus();
+        }
+
+    }else{
+      onOpenApp(programName);
+    }
+
+    
+    
   };
 
   return (
@@ -53,6 +68,20 @@ const StartMenu = ({ onOpenApp }) => {
               />
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* User Profile and Power Button */}
+      <div className="flex justify-between items-center p-4 mt-auto bg-[#1e1e1e] rounded-b-xl px-14">
+        {/* Profile */}
+        <div className="flex items-center space-x-3">
+          <img src="/windows/profile.png" alt="User Profile" className="w-8 h-8 rounded-full" />
+          <span className="text-white text-sm">Chris</span>
+        </div>
+
+        {/* Power Button */}
+        <div>
+          <img src="/windows/Power.svg" alt="Power" className="w-4 h-4 cursor-pointer" />
         </div>
       </div>
     </div>

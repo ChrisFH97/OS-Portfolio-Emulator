@@ -251,7 +251,7 @@ const Calculator = ({ setIsAppDragging, onCloseCalculator, isMinimized, onMinimi
       maxHeight={470}
       maxWidth={300}
       bounds="window"
-      className={`rounded-lg shadow-lg calculator-window transition-opacity duration-300 ${
+      className={`rounded-lg shadow-lg calculator-window transition-opacity duration-300 border border-[#343434] ${
         closing || isFadingOut ? 'opacity-0' : fadeIn ? 'opacity-100' : 'opacity-0'
       } ${isMaximized ? 'transition-all duration-300' : ''}`}
       dragHandleClassName="application-header"
