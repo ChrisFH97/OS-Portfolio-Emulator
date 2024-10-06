@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Notepad from './Applications/Notepad';
 import Calculator from './Applications/Calculator';
 import Minesweeper from './Applications/Minesweeper';
+import Chrome from './Applications/Chrome';
 
 const Desktop = ({ apps, closeApp, toggleMinimizeApp }) => {
   const [isDragging, setIsDragging] = useState(false);
@@ -174,6 +175,15 @@ const Desktop = ({ apps, closeApp, toggleMinimizeApp }) => {
           onMinimizeToggle={() => toggleMinimizeApp('Minesweeper')}
           isMinimized={apps.find(app => app.name === 'Minesweeper')?.isMinimized}
           onCloseMinesweeper={() => closeApp('Minesweeper')}
+        />
+      )}
+
+      {apps.find(app => app.name === 'Google Chrome')?.isOpen && (
+        <Chrome
+          setIsAppDragging={setIsAppDragging}
+          onMinimizeToggle={() => toggleMinimizeApp('Google Chrome')}
+          isMinimized={apps.find(app => app.name === 'Google Chrome')?.isMinimized}
+          onCloseChrome={() => closeApp('Google Chrome')}
         />
       )}
     </div>

@@ -9,7 +9,7 @@ import '../styles/globals.css';
 const WindowsLayout = () => {
   const [AppStatus, setAppStatus] = useState([
     { name: 'Notepad', isMinimized: false, isOpen: false },
-    { name: 'Chrome', isMinimized: false, isOpen: false },
+    { name: 'Google Chrome', isMinimized: false, isOpen: false },
     { name: 'FireFox', isMinimized: false, isOpen: false },
     { name: 'Edge', isMinimized: false, isOpen: false },
     { name: 'Spotify', isMinimized: false, isOpen: false },

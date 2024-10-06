@@ -5,7 +5,7 @@ import localFont from 'next/font/local';
 const windowsFont = localFont({ src: '../../fonts/SegoeUIVF.ttf' });
 
 const pinnedPrograms = [
-  { name: "Google Chrome", icon: "/windows/chrome.png" },
+  { name: "Google Chrome", icon: "/windows/google chrome.png" },
   { name: "LinkedIn", icon: "/windows/linkedin.png" },
   { name: "Github", icon: "/windows/github.png" },
   { name: "Chris AI", icon: "/windows/copilot.png" },
@@ -35,6 +35,7 @@ const StartMenu = ({ onOpenApp }) => {
         }
 
     }else{
+      console.log("Opening: ", programName);
       onOpenApp(programName);
     }
 

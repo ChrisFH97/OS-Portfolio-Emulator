@@ -1,5 +1,5 @@
 const StartMenuItem = ({ Name, IconSrc }) => {
-    let hasBeenCreated = ['LinkedIn', 'Github', 'Notepad', 'Calculator', 'Minesweeper'];
+    let hasBeenCreated = ['LinkedIn', 'Github', 'Notepad', 'Calculator', 'Minesweeper', 'Google Chrome'];
     let isCreated = hasBeenCreated.includes(Name) ? '' : 'bg-red-500';
 
     return (

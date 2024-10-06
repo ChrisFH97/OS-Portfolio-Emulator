@@ -53,9 +53,9 @@ const WindowsTaskbar = ({ openApp, toggleMinimizeApp, AppStatus }) => {
     const updateDateTime = () => {
       const now = new Date();
       setCurrentTime(now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }));
-      setCurrentDate(now.toLocaleDateString([], { month: 'numeric', day: 'numeric', year: 'numeric' }));
+      setCurrentDate(now.toLocaleDateString('en-GB', { day: '2-digit', month: '2-digit', year: 'numeric' })); // UK format
     };
-
+  
     updateDateTime();
     const intervalId = setInterval(updateDateTime, 1000);
     return () => clearInterval(intervalId);
@@ -115,7 +115,7 @@ const WindowsTaskbar = ({ openApp, toggleMinimizeApp, AppStatus }) => {
         </div>
 
         {/* Time and Date */}
-        <div className="flex flex-row items-center">
+        <div className="flex flex-row items-center mr-8">
 
           <p className={`text-xs ${windowsFont.className} text-center px-[8px]`}>
             ENG <br/> UK
@@ -126,7 +126,7 @@ const WindowsTaskbar = ({ openApp, toggleMinimizeApp, AppStatus }) => {
             <img src='/windows/windows-speaker.png' alt="Speaker Icon" className="w-[18px] h-[18px] mr-[8px] cursor-pointer" />
           </div>
 
-          <div className="flex flex-col items-end space-y-1 ml-[16px]">
+          <div className="flex flex-col items-end space-y-1 ml-[8px]">
             <p className={`text-xs ${windowsFont.className}`}>{currentTime}</p>
             <p className={`text-xs ${windowsFont.className}`}>{currentDate}</p>
           </div>
